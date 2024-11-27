@@ -23,10 +23,7 @@ class CarsTest {
     private Cars cars;
 
     static Stream<Arguments> provideCarNames() {
-        return Stream.of(
-                arguments(List.of("pobi", "woni")),
-                arguments(List.of("hyun", "yeeun"))
-        );
+        return Stream.of(arguments(List.of("pobi", "woni")), arguments(List.of("hyun", "yeeun")));
     }
 
     @BeforeEach
