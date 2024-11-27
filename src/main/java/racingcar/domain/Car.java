@@ -4,14 +4,18 @@ public class Car {
     private final String name;
     private final int position;
 
-    private Car(String name) {
+    private Car(String name, int position) {
         this.name = name;
-        position = 0;
+        this.position = position;
     }
 
     public static Car createFrom(String name) {
         validate(name);
-        return new Car(name);
+        return new Car(name, 0);
+    }
+
+    public Car move() {
+        return new Car(this.name, this.position + 1);
     }
 
     private static void validate(String name) {
