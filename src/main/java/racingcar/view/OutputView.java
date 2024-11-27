@@ -1,19 +1,34 @@
 package racingcar.view;
 
-import java.util.List;
 import racingcar.dto.CarStatusDto;
 import racingcar.dto.CarStatusDtos;
+import racingcar.dto.WinnerCarsDto;
 
 public class OutputView {
-    /* TODO
-     * 1. 레이싱 실행 결과 출력
-     * 2. 우승자 결과 출력
-     */
+
     public static void printGameStatus(CarStatusDtos carStatusDtos) {
         for (CarStatusDto carStatus : carStatusDtos.carStatusDtos()) {
             printCarStatus(carStatus.name(), carStatus.position());
         }
         System.out.println();
+    }
+
+    public static void printGameResult(WinnerCarsDto winnerCarsDto) {
+        if (winnerCarsDto.names().size() == 1) {
+            printWinnerCar(winnerCarsDto);
+            return;
+        }
+
+        printWinnerCars(winnerCarsDto);
+    }
+
+    private static void printWinnerCar(WinnerCarsDto winnerCarsDto) {
+        System.out.println("최종 우승자 : " + winnerCarsDto.names().getFirst());
+    }
+
+    private static void printWinnerCars(WinnerCarsDto winnerCarsDto) {
+        String winnerCarNames = String.join(", ", winnerCarsDto.names());
+        System.out.println("최종 우승자 : " + winnerCarNames);
     }
 
     private static void printCarStatus(String name, int position) {
