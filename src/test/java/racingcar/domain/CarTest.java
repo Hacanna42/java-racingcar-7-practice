@@ -68,7 +68,7 @@ class CarTest {
         }
     }
 
-    @DisplayName(".isAheadOf()가 의도대로 동작하는지 테스트한다")
+    @DisplayName(".isAheadOf()가 의도대로 동작하는지 테스트한다.")
     @Test
     void isAheadOf_테스트() {
         // given
@@ -79,7 +79,7 @@ class CarTest {
         Assertions.assertThat(car2.isAheadOf(resultCar)).isFalse();
     }
 
-    @DisplayName(".isSamePosition()이 의도대로 동작하는지 테스트한다")
+    @DisplayName(".isSamePosition()이 의도대로 동작하는지 테스트한다.")
     @Test
     void isSamePosition_테스트() {
         // given
@@ -93,7 +93,7 @@ class CarTest {
         Assertions.assertThat(car1.isSamePositionWith(movedCar1)).isFalse();
     }
 
-    @DisplayName(".getCarStatus() 가 의도대로 동작하는지 테스트한다")
+    @DisplayName(".getCarStatus() 가 의도대로 동작하는지 테스트한다.")
     @Test
     void getCarStatus_테스트() {
         // when
