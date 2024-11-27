@@ -2,7 +2,6 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import racingcar.dto.CarStatusDtos;
 import racingcar.dto.WinnerCarsDto;
 import racingcar.util.NumberGenerator;
@@ -14,11 +13,15 @@ public class Cars {
         this.cars = List.copyOf(cars);
     }
 
-    public static Cars createFrom(List<String> carNames) {
+    public static Cars createFromNames(List<String> carNames) {
         List<Car> cars = new ArrayList<>();
         for (String carName : carNames) {
             cars.add(Car.createFrom(carName));
         }
+        return new Cars(cars);
+    }
+
+    public static Cars createFromCars(List<Car> cars) {
         return new Cars(cars);
     }
 

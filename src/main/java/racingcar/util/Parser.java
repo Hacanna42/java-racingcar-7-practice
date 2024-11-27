@@ -7,8 +7,8 @@ import racingcar.domain.Round;
 
 public class Parser {
     public static Cars parseCars(String input) {
-        List<String> cars = Arrays.asList(input.split(","));
-        return Cars.createFrom(cars);
+        List<String> carNames = Arrays.asList(input.split(","));
+        return Cars.createFromNames(carNames);
     }
 
     public static Round parseRound(String input) {
