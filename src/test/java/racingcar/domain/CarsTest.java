@@ -35,17 +35,20 @@ class CarsTest {
     @ParameterizedTest
     @MethodSource("provideCarNames")
     void Cars_객체_생성_테스트(List<String> carNames) {
-        // given
+        // when
         Cars cars = Cars.createFromNames(carNames);
 
-        // when & then
+        // then
         Assertions.assertThat(cars).isInstanceOf(Cars.class);
     }
 
     @DisplayName(".moveAllCar()이 의도대로 동작하는지 테스트")
     @Test
     void moveAllCar_테스트() {
+        // when
         Cars resultCars = cars.moveAllCars(new TestNumberGenerator(VALUE_THAT_MOVE));
+
+        // then
         CarStatusDtos carStatusDtos = resultCars.getCarStatuses();
         for (CarStatusDto carStatus : carStatusDtos.carStatusDtos()) {
             Assertions.assertThat(carStatus.position()).isEqualTo(1);
@@ -57,9 +60,11 @@ class CarsTest {
     void getCarStatuses_테스트() {
         // given
         List<String> carNames = List.of("pobi", "woni");
+
+        // when
         CarStatusDtos carStatusDtos = cars.getCarStatuses();
 
-        // when & then
+        // then
         Assertions.assertThat(carStatusDtos.carStatusDtos().getFirst().name()).isEqualTo(carNames.getFirst());
         Assertions.assertThat(carStatusDtos.carStatusDtos().getLast().name()).isEqualTo(carNames.getLast());
     }

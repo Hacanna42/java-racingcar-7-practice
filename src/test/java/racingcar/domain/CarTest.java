@@ -30,10 +30,10 @@ class CarTest {
         @ParameterizedTest
         @ValueSource(strings = {"pobi", "woni"})
         void 자동차_객체_생성_테스트(String name) {
-            // given
+            // when
             Car car = Car.createFrom(name);
 
-            // when & then
+            // then
             Assertions.assertThat(car).isInstanceOf(Car.class);
         }
 
@@ -50,14 +50,20 @@ class CarTest {
         @DisplayName("자동차는 4 이상의 숫자에 대해 전진한다.")
         @Test
         void 자동차_전진_테스트() {
+            // when
             Car resultCar = car1.move(new TestNumberGenerator(VALUE_THAT_MOVE));
+
+            // then
             Assertions.assertThat(resultCar.isAheadOf(car2)).isTrue();
         }
 
         @DisplayName("자동차는 4 미만의 숫자에 대해 전진하지 않는다.")
         @Test
         void 자동차_정지_테스트() {
+            // when
             Car resultCar = car1.move(new TestNumberGenerator(VALUE_THAT_NOT_MOVE));
+
+            // then
             Assertions.assertThat(resultCar.isSamePositionWith(car2)).isTrue();
         }
     }
@@ -65,7 +71,10 @@ class CarTest {
     @DisplayName(".isAheadOf()가 의도대로 동작하는지 테스트한다")
     @Test
     void isAheadOf_테스트() {
+        // given
         Car resultCar = car1.move(new TestNumberGenerator(VALUE_THAT_MOVE));
+
+        // when & then
         Assertions.assertThat(resultCar.isAheadOf(car2)).isTrue();
         Assertions.assertThat(car2.isAheadOf(resultCar)).isFalse();
     }
@@ -87,10 +96,10 @@ class CarTest {
     @DisplayName(".getCarStatus() 가 의도대로 동작하는지 테스트한다")
     @Test
     void getCarStatus_테스트() {
-        // given
+        // when
         CarStatusDto carStatusDto = car1.getCarStatus();
 
-        // when & then
+        // then
         Assertions.assertThat(carStatusDto.name()).isEqualTo("pobi");
         Assertions.assertThat(carStatusDto.position()).isEqualTo(0);
     }
