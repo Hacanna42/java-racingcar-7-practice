@@ -12,6 +12,10 @@ public class Parser {
     }
 
     public static Round parseRound(String input) {
-        return Round.createFrom(Integer.parseInt(input));
+        try {
+            return Round.createFrom(Integer.parseInt(input));
+        } catch (NumberFormatException numberFormatException) {
+            throw new IllegalArgumentException(numberFormatException.getMessage());
+        }
     }
 }
