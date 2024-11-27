@@ -7,11 +7,11 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class GameController {
-
     public void run() {
-        Cars cars = getCars();
+        Cars initCars = getCars();
         Round round = getRound();
-        playGame(cars, round);
+        Cars updatedCars = playGame(initCars, round);
+        OutputView.printGameResult(updatedCars.getWinnerCars());
     }
 
     private Cars getCars() {
@@ -22,7 +22,7 @@ public class GameController {
         return Parser.parseRound(InputView.getRounds());
     }
 
-    private void playGame(Cars initCars, Round initRound) {
+    private Cars playGame(Cars initCars, Round initRound) {
         Cars cars = initCars;
         Round round = initRound;
 
@@ -31,7 +31,7 @@ public class GameController {
             OutputView.printGameStatus(cars.getCarStatuses());
             round = round.consumeRound();
         }
+
+        return cars;
     }
-
-
 }
