@@ -1,7 +1,7 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.dto.CarStatusDto;
+import racingcar.util.NumberGenerator;
 
 public class Car {
     private final String name;
@@ -17,8 +17,8 @@ public class Car {
         return new Car(name, 0);
     }
 
-    public Car move() {
-        if (canMove()) {
+    public Car move(NumberGenerator numberGenerator) {
+        if (canMove(numberGenerator)) {
             return new Car(this.name, this.position + 1);
         }
         return this;
@@ -40,8 +40,8 @@ public class Car {
         return name;
     }
 
-    private boolean canMove() {
-        return Randoms.pickNumberInRange(0, 9) >= 4;
+    private boolean canMove(NumberGenerator numberGenerator) {
+        return numberGenerator.generate() >= 4;
     }
 
     private static void validate(String name) {

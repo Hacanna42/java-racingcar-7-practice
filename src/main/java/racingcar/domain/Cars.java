@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import racingcar.dto.CarStatusDtos;
 import racingcar.dto.WinnerCarsDto;
+import racingcar.util.NumberGenerator;
 
 public class Cars {
     private final List<Car> cars;
@@ -21,8 +22,8 @@ public class Cars {
         return new Cars(cars);
     }
 
-    public Cars moveAllCar() {
-        List<Car> movedCars = cars.stream().map(Car::move).toList();
+    public Cars moveAllCars(NumberGenerator numberGenerator) {
+        List<Car> movedCars = cars.stream().map(car -> car.move(numberGenerator)).toList();
         return new Cars(movedCars);
     }
 

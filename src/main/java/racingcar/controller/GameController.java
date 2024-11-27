@@ -3,6 +3,7 @@ package racingcar.controller;
 import racingcar.domain.Cars;
 import racingcar.domain.Round;
 import racingcar.util.Parser;
+import racingcar.util.RandomNumberGenerator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
@@ -27,7 +28,7 @@ public class GameController {
         Round round = initRound;
 
         while (round.hasNextRound()) {
-            cars = cars.moveAllCar();
+            cars = cars.moveAllCars(new RandomNumberGenerator());
             OutputView.printGameStatus(cars.getCarStatuses());
             round = round.consumeRound();
         }
